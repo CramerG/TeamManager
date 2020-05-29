@@ -22,7 +22,7 @@ module.exports.updatePlayer = (req, res) => {
         Player.updateOne({_id: req.params.id}, {game2: req.body.status}, {new: true})
             .then(newStatus => res.json(newStatus))
             .catch(err => res.json({message: "Error updating player status", error: err}));
-    } else {
+    } else if (req.body.num == 3) {
         Player.updateOne({_id: req.params.id}, {game3: req.body.status}, {new: true})
             .then(newStatus => res.json(newStatus))
             .catch(err => res.json({message: "Error updating player status", error: err}));
