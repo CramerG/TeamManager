@@ -13,6 +13,10 @@ const List = props => {
             .catch(err => console.log(err));
     }, [players]) 
 
+    const removeFromDOM = (playerID) => {
+        setPlayers(players.filter(player => player._id !== playerID));
+    };
+
     return(
         <div>
             <h2>Players</h2>
@@ -32,7 +36,7 @@ const List = props => {
                                     <TableCell>{player.name}</TableCell>
                                     <TableCell>{player.position}</TableCell>
                                     <TableCell>
-                                        <DeleteButton></DeleteButton>
+                                        <DeleteButton playerID={player._id} callback={removeFromDOM}/>
                                     </TableCell>
                                 </TableRow>
                             );
